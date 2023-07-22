@@ -1,0 +1,7 @@
+numpy
+Flask
+SQLAlchemy
+Flask-SQLAlchemy
+WTForms
+Flask-WTF
+opencv-python

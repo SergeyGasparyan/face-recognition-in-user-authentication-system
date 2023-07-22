@@ -1,0 +1,119 @@
+{% extends "user_base.html" %}
+ 
+{% block title %}
+  User Page: Home
+{% endblock%}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card bg-success text-white mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Current Account</h5>
+            <p class="card-text">$53,000 <span style="color: green; font-size: smaller">+55%</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success text-white mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Today's Users</h5>            
+            <p class="card-text">+2,300 <span style="color: green; font-size: smaller">+5%</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success text-white mb-3">
+          <div class="card-body">
+            <h5 class="card-title">New Clients</h5>
+            <p class="card-text">+3,020 <span style="color: red; font-size: smaller">-14%</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success text-white mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Total Sales</h5>
+            <p class="card-text">$173,000 <span style="color: green; font-size: smaller">+8%</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="card bg-success text-white mb-3">
+          <div class="card-body">
+            <h5>Welcome back,</h5>
+            <h1>Sergey</h1>
+            <br>
+            <p>Glad to see you again!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Sales Overview</h4>
+            <p class="card-text"><span style="color: green;">+17%</span> in last month</p>
+            <canvas id="sales-chart" height="110"></canvas>
+          </div>
+        </div>
+      </div>  
+      <div class="col-md-3">  
+        <div class="card">
+          <div class="card-header">
+            <a href="" style="color:red; background: none;">Unseen messages (5)</a>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action">Yanek - Hey, can you check if the new client's account is now active?</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action">Karen - Can you send me the 3rd customer's transaction history?</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action">Hrayr - Do you have a moment to review this loan application for me?</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action">Maria - Could you provide me with the contact information for our correspondent bank in Japan?</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action">Varuzh - The printer in the back isn't working, can you come take a look at it when you have a chance?</li>
+          </ul>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('sales-chart').getContext('2d');
+    const salesChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'Sales',
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        data: [500, 520, 560, 480, 600, 700],
+        borderColor: 'blue',
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+    });
+  </script>
+{% endblock%}

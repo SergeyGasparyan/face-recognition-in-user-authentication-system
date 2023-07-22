@@ -1,0 +1,59 @@
+{% extends "login_register_base.html" %}
+
+{% block title %}
+  Registration Page: Face Scan Prep.
+{% endblock%}
+
+{% block body %}
+  <style>
+    img {
+      border-radius: 5%;
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    }
+
+    body {
+      color: white;
+      text-align: center;
+    }
+
+    .login-box {
+      width: 750px;
+      height: 775px;
+      border-radius: 25px;
+    }
+
+    .login-box .user-box label {
+      top:0;
+      left: 0;
+      color: #fff;
+    }
+
+    .login-box .user-box input:focus ~ label,
+    .login-box .user-box input:valid ~ label {
+      top: -20px;
+      left: 0;
+      color: #03e9f4;
+      font-size: 12px;
+    }
+
+    .login-box form button {
+      display: inline-block;
+    }
+  </style>
+  <div class="login-box">
+    <h1>Registration with face capturing</h1>
+    <h2>Place your face in the middle of the box</h2>
+    <form action="" method="post">
+      <img id="video" src="{{ url_for('video_feed_loop') }}"/>
+      <br>
+      <button type="button" onclick="location.href='register_face';">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Scan
+      </button>
+    </form>
+  </div>
+{% endblock%} 

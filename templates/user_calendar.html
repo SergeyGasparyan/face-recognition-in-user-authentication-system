@@ -1,0 +1,113 @@
+{% extends "user_base.html" %}
+
+{% block title %}
+  Calendar
+{% endblock%}
+
+{% block content %}
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet' />
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
+  <div class="container-fluid card">
+    <div class='row'>
+      <div class='col'>
+        <div class="card-body">
+          <div id='calendar'></div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+  <script>
+    $(document).ready(function() {
+
+      $('#calendar').fullCalendar({
+        height: 800,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month'
+        },
+        dayRender: function(date, cell) {
+          var todayDate = moment().add(1, 'day').startOf('day');
+          if (date.isSame(todayDate, "day")) {
+            cell.css("background-color", "green");
+          }
+        },
+        events: [
+          {
+            title: 'Client Account',
+            start: '2023-04-30T09:30:00',
+          },
+          {
+            title: 'Transaction history',
+            start: '2023-04-30T09:00:00'
+          },
+          {
+            title: 'Loan Application',
+            start: '2023-04-29T19:00:00'
+          },
+          {
+            title: 'Japan Bank',
+            start: '2023-04-29T18:00:00'
+          },
+          {
+            title: 'Broken Printer',
+            start: '2023-04-29T14:00:00'
+          },
+          {
+            title: 'Reminder',
+            start: '2023-04-29T10:00:00'
+          },
+          {
+            title: 'Urgent',
+            start: '2023-04-25T18:00:00'
+          },
+          {
+            title: 'Confirmation',
+            start: '2023-04-23T18:00:00'
+          },
+          {
+            title: 'Feedback Request',
+            start: '2023-04-18T18:00:00'
+          },
+          {
+            title: 'Project Update',
+            start: '2023-04-15T18:00:00'
+          },
+          {
+            title: 'OCR Project',
+            start: '2023-04-14T18:00:00'
+          },
+          {
+            title: 'Urgent',
+            start: '2023-04-13T18:00:00'
+          },
+          {
+            title: 'Reminder',
+            start: '2023-04-06T18:00:00'
+          },
+          {
+            title: 'Talk with Hrayr',
+            start: '2023-03-30T18:00:00'
+          },
+          {
+            title: 'Inventory list',
+            start: '2023-03-27T18:00:00'
+          },
+          {
+            title: 'Marketing Campaign',
+            start: '2023-03-24T18:00:00'
+          },
+          {
+            title: 'Important!!',
+            start: '2023-03-01T18:00:00'
+          }
+        ],
+      });
+      
+    });
+  </script>
+{% endblock%}

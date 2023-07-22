@@ -1,0 +1,51 @@
+{% extends "user_base.html" %}
+
+{% block title %}
+  User Settings
+{% endblock%}
+
+{% block content %}
+  <style type="text/css">
+    #update_div {
+      border-radius: 15px; 
+      box-shadow:  0 15px 25px rgba(0, 0, 0, .6); 
+      background: linear-gradient(#141e30, #243b55);
+    }
+  </style>
+  {% for msg in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ msg }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+  <h1 style="color:white;">{{user.name}} {{user.lastName}}</h1>
+  <br>
+  <div class="row shadow p-3 mb-5 bg-body rouded" id="update_div">
+    <div class="col-md-3 border-right" style="width: 875px;">
+      <form style="color: white;" method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", value=user.name) }}
+        <br>
+
+        {{ form.lastName.label(class="form-label") }}
+        {{ form.lastName(class="form-control", value=user.lastName) }}
+        <br>
+
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", value=user.email) }}
+        <br>
+
+        {{ form.telPhone.label(class="form-label") }}
+        {{ form.telPhone(class="form-control", value=user.telPhone) }}
+        <br>
+
+        {{ form.submit(class="btn btn-primary") }}
+      </form>
+    </div>
+    <div class="col-md-3 border-right">
+      <img src="{{pic_filename}}" width="400", height="400">
+    </div>
+  </div>
+{% endblock%}

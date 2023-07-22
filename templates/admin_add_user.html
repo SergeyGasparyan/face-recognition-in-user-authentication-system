@@ -1,0 +1,53 @@
+{% extends "admin_base.html" %}
+
+{% block title %}
+	Admin Page: Add User
+{% endblock %} 
+
+{% block content %}
+	<style>
+		#form-div {
+			border-radius: 15px; 
+			box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6); 
+			background: linear-gradient(#141e30, #243b55);
+		}
+
+		#form-new-user {
+			color: white; 
+			background: linear-gradient(#141e30, #243b55);
+		}
+	</style>
+	<h1 style="color:white;">Add a new user</h1>
+	<br>
+	<div class="shadow p-3 mb-5 bg-body rouded" id="form-div"> 
+		<form id="form-new-user" method="POST">
+			{{ form.hidden_tag() }}
+
+			{{ form.name.label(class="form-label") }}
+			{{ form.name(class="form-control") }}
+			<br>
+
+			{{ form.lastName.label(class="form-label") }}
+			{{ form.lastName(class="form-control") }}
+			<br>
+
+			{{ form.email.label(class="form-label") }}
+			{{ form.email(class="form-control") }}
+			<br>
+
+			{{ form.telPhone.label(class="form-label") }}
+			{{ form.telPhone(class="form-control") }}
+			<br>
+
+			{{ form.password.label(class="form-label") }}
+			{{ form.password(class="form-control") }}
+			<br>
+
+			{{ form.confirm.label(class="form-label") }}
+			{{ form.confirm(class="form-control") }}
+			<br>
+
+			{{ form.submit(class="btn btn-primary") }}
+		</form>
+	</div> 
+{% endblock %}

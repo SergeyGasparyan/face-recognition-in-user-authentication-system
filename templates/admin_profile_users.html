@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+
+{% block title %}
+	Admin Page: User's Profiles
+{% endblock %}
+ 
+{% block content %}
+	{% for msg in get_flashed_messages() %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{ msg }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endfor %}
+	<h1 style="color: #fff;">User's Profiles</h1>
+	<br>
+	<table class="table" style="color: #fff;">
+		<thead>
+			<tr>
+				<th style="color: #fff;">Name</th>
+				<th style="color: #fff;">Last Name</th>
+				<th style="color: #fff;">Email</th>
+				<th style="color: #fff;">Tel. Number</th>
+				<th style="color: #fff;">Last Login</th>
+				<th style="color: #fff;"></th>
+				<th style="color: #fff;"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in all_users %}
+				{% if user.name != "admin"%}
+					<tr>
+						<td>{{ user.name }}</td>
+						<td>{{ user.lastName }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.telPhone }}</td>
+						<td>{{ user.lastLoginTime.strftime("%x") }}</td>
+						<td style="text-align: center;"><a href="{{url_for('update_user', uID=user.uID)}}" class="btn btn-primary">Update <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 15 20"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .320.320l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></a></td>
+						<td style="text-align: center;"><a href="{{url_for('delete_user', uID=user.uID)}}"class="btn btn-danger">Delete <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 15 20"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></a></td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
